@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AceCycleManager</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        header img {
+            max-width: 120px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #4CAF50;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #2e7d32;
+        }
+
+        main {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #4CAF50;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 2rem;
+        }
+
+        table {
+            width: 80%;
+            margin: 2rem auto;
+            border-collapse: collapse;
+            background: #ffffff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        table th, table td {
+            padding: 1rem;
+            border: 1px solid #ddd;
+        }
+
+        table th {
+            background-color: #4CAF50;
+            color: #fff;
+            text-align: left;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #2e7d32;
+            transform: scale(1.05);
+        }
+
+        footer {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        .about-us {
+            background-color: #ffffff;
+            padding: 2rem 0;
+        }
+
+        .about-us h2 {
+            font-size: 2rem;
+            color: #4CAF50;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .contributors {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .contributor {
+            text-align: center;
+            width: 250px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+
+        .contributor img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+        }
+
+        .contributor h3 {
+            font-size: 1.2rem;
+            color: #4CAF50;
+            margin-bottom: 0.5rem;
+        }
+
+        .contributor p {
+            font-size: 0.9rem;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="AceCycle Logo">
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/inventory">Inventory</a></li>
+                    <li><a href="/usage">Usage Logs</a></li>
+                    <li><a href="/metrics">CO₂ Metrics</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <h1>Welcome to AceCycleManager</h1>
+        <p>{{ message }}</p>
+
+        <h2>Ball Usage Advice</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Ball Age (Days)</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for advice_item in advice %}
+                <tr>
+                    <td>{{ advice_item.age }}</td>
+                    <td>{{ advice_item.status }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <h2>Upload Balls In Use</h2>
+        <form action="/upload" method="POST" enctype="multipart/form-data">
+            <input type="file" name="file" accept=".csv" required>
+            <button type="submit">Upload and Retrain</button>
+        </form>
+    </main>
+
+    <section class="about-us">
+        <h2>About Us</h2>
+        <div class="contributors">
+            <div class="contributor">
+                <img src="{{ url_for('static', filename='contributor1.jpg') }}" alt="Contributor 1">
+                <h3>Nishant Gadde</h3>
+                <p>Nishant is the CEO for AceCycle, focused on long term sustainability of tennis. </p>
+            </div>
+            <div class="contributor">
+                <img src="{{ url_for('static', filename='contributor2.jpg') }}" alt="Contributor 2">
+                <h3>Rayaan Altaf</h3>
+                <p>Rayaan is the Co-President of AceCycle who also focuses on recycling tennis balls. </p>
+            </div>
+            <div class="contributor">
+                <img src="{{ url_for('static', filename='contributor3.jpg') }}" alt="Contributor 3">
+                <h3>Sanjit Kumar</h3>
+                <p>Sanjit is the Co-President of AceCycle, focusing on the Dallas area's tennis sustainability. </p>
+            </div>
+            <div class="contributor">
+                <img src="{{ url_for('static', filename='contributor4.jpg') }}" alt="Contributor 3">
+                <h3>Dheeraj Tallapragada</h3>
+                <p>Dheeraj is the Co-President of AceCycle, focusing on the Bay Area's tennis sustainability. </p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 AceCycle. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+

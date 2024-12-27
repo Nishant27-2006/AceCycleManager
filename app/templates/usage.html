@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usage Logs</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="AceCycle Logo">
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/inventory">Inventory</a></li>
+                    <li><a href="/usage">Usage Logs</a></li>
+                    <li><a href="/metrics">CO₂ Metrics</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <h1>Usage Logs</h1>
+        <form method="POST">
+            <label for="notes">Notes:</label>
+            <textarea id="notes" name="notes" rows="3" required></textarea>
+            <button type="submit">Add Log</button>
+        </form>
+        <h2>Action Logs</h2>
+        <ul>
+            {% for log in logs %}
+            <li>
+                <strong>{{ log.action.capitalize() }}</strong>: 
+                {{ log.quantity if log.action in ['added', 'recycled'] else log.details }} 
+                (Date: {{ log.date }})
+            </li>
+            {% endfor %}
+        </ul>
+    </main>
+    <footer>
+        <p>&copy; 2024 AceCycle. All rights reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,3 +1,5 @@
+![AceCycleManager Homepage](homepage.png)
+
 # AceCycleManager 🎾
 
 AceCycleManager is an open-source tool for **tennis stores** to manage their tennis ball inventory, track usage, and monitor CO₂ emissions. It simplifies inventory management and promotes sustainability by recommending when to recycle tennis balls.

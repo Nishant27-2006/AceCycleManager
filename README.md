@@ -19,7 +19,7 @@ AceCycleManager is an open-source tool for **tennis stores** to manage their ten
   - Log tennis ball usage and recycling actions.
   - Maintain a history of inventory usage.
 
-- **AI-Powered Advice**:
+- **ML-Powered Advice**:
   - Provides real-time advice on ball usage and recycling using machine learning.
 
 ---
@@ -49,18 +49,15 @@ You’ll need the following to run AceCycleManager:
    ```bash
    cd AceCycleManager/app
 Install Dependencies: Use requirements.txt to install all the required Python packages:
-bash
-Copy code
+
 pip install -r requirements.txt
 Running the Application 🏃
 Start the Flask application:
 
-bash
-Copy code
+
 python app.py
 Open your browser and go to:
 
-arduino
 Copy code
 http://127.0.0.1:5000
 Use the interface to:
@@ -82,9 +79,8 @@ Record how tennis balls are used for events like matches or practice.
 Monitoring CO₂ Metrics:
 
 View total emissions and reductions from recycling efforts.
-Folder Structure 📂
+## Folder Structure 📂
 php
-Copy code
 AceCycleManager/
 ├── app/
 │   ├── app.py           # Main Flask application
@@ -96,32 +92,33 @@ AceCycleManager/
 │   ├── usage_data.csv   # Sample usage data
 │   └── inventory.db     # SQLite database for inventory (if applicable)
 └── README.md            # Documentation
-Contributing 🤝
+
+## Contributing 🤝
 We welcome contributions! Here's how to get started:
 
 Fork this repository.
 Create a feature branch:
-bash
-Copy code
+```bash
 git checkout -b feature-name
+```
 Commit your changes:
-bash
-Copy code
+```bash
 git commit -m "Add feature-name"
+```
 Push to your fork:
-bash
-Copy code
+
+```bash
 git push origin feature-name
+```
+
 Open a pull request.
 
-License 📜
+## License 📜
 This project is licensed under the MIT License. See the LICENSE file for details.
 
-Acknowledgments 💡
+## Acknowledgments 💡
 Inspired by the need for sustainability in tennis.
 Built by a team passionate about sports and environmental responsibility.
-vbnet
-Copy code
 
 ### **Steps to Use**
 1. Open a text editor (like Notepad or VS Code).

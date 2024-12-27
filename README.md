@@ -80,7 +80,7 @@ Monitoring CO₂ Metrics:
 
 View total emissions and reductions from recycling efforts.
 ## Folder Structure 📂
-php
+```php
 AceCycleManager/
 ├── app/
 │   ├── app.py           # Main Flask application
@@ -92,7 +92,7 @@ AceCycleManager/
 │   ├── usage_data.csv   # Sample usage data
 │   └── inventory.db     # SQLite database for inventory (if applicable)
 └── README.md            # Documentation
-
+```
 ## Contributing 🤝
 We welcome contributions! Here's how to get started:
 

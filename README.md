@@ -41,7 +41,7 @@ You’ll need the following to run AceCycleManager:
 1. **Download or Clone the Repository**:
    - Option 1: Clone the repository:
      ```bash
-     git clone https://github.com/your-username/AceCycleManager.git
+     git clone https://github.com/Nishant27-2006/AceCycleManager.git
      ```
    - Option 2: Download the ZIP file:
      - Go to the repository page and click the green **Code** button.
